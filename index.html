@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>API Demo</h1>
+    <button onclick="fetchData()">获取数据</button>
+    <div id="result"></div>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await axios.post('https://4a21ebcd-green-salad-8178.lu3307726.workers.dev/', {
+                    key: 'value'
+                });
+                
+                document.getElementById('result').innerHTML = 
+                    JSON.stringify(response.data, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 
+                    'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
